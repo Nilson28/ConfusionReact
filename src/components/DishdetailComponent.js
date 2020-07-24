@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
 
 export default class DishdetailComponent extends Component {
@@ -18,8 +18,10 @@ export default class DishdetailComponent extends Component {
         const comments = this.props.dish.comments.map((comment) => {
             return (
                 <div key={comment.id} className="col-12 col md-5 m-1">
-                    <p>{comment.comment}</p>
-                    <p>--{comment.author}</p>
+                    <ul className="list-unstyled">
+                        <li><p>{comment.comment}</p></li>
+                        <li><p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {month: 'short', day: 'numeric', year: 'numeric'}).format(new Date(comment.date))}</p></li>
+                    </ul>
                 </div>
             );
         });
