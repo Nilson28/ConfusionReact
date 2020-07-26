@@ -17,18 +17,16 @@ export default class DishdetailComponent extends Component {
 
         const comments = this.props.dish.comments.map((comment) => {
             return (
-                <div key={comment.id} className="col-12 col md-5 m-1">
-                    <ul className="list-unstyled">
-                        <li><p>{comment.comment}</p></li>
-                        <li><p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {month: 'short', day: 'numeric', year: 'numeric'}).format(new Date(comment.date))}</p></li>
-                    </ul>
-                </div>
+                <ul key={comment.id} className="list-unstyled">
+                    <li><p>{comment.comment}</p></li>
+                    <li><p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {month: 'short', day: 'numeric', year: 'numeric'}).format(new Date(comment.date))}</p></li>
+                </ul>
             );
         });
 
         if (dish != null)
             return (
-                <div>
+                <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
                     {comments}
                 </div>
@@ -52,9 +50,7 @@ export default class DishdetailComponent extends Component {
                             </CardBody>
                         </Card>
                     </div>
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(this.state.selectedDish)}
-                    </div>
+                    {this.renderComments(this.state.selectedDish)}
                 </div>
             </div>
 
